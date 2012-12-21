@@ -434,7 +434,7 @@ expr({'fun',Line,Body}) ->
     end;
   
 expr({call, _Line,{atom, _, fun_chain},As0}) -> %% fun_chain call
-    fun_chain:handle_chain(As0);
+    fun_chain:chain_calls(As0);
   
 expr({call,Line,F0,As0}) ->
     %% N.B. If F an atom then call to local function or BIF, if F a
