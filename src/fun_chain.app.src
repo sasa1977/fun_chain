@@ -1,0 +1,6 @@
+{application, fun_chain,
+ [{description, "Function chaining in Erlang"},
+  {vsn, "%%VSN%%"},
+  {modules, []},
+  {registered, []},
+  {applications, []}]}.
