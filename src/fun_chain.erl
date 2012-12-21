@@ -5,9 +5,11 @@
 
 parse_transform(Forms, _Options) -> erlang_tree:walk(Forms).
   
-chain_calls([Initial | Rest]) -> do_chain_calls(Rest, Initial).
+chain_calls([Initial | Calls]) -> do_chain_calls(Calls, Initial).
 
 do_chain_calls([], LastResult) -> LastResult;
-do_chain_calls([{call, Line, Fun, Args} | Rest], LastResult) ->
-  do_chain_calls(Rest, {call, Line, Fun, Args ++ [LastResult]}).
-  
+do_chain_calls([CurrentCall | RemainingCalls], LastResult) ->
+  do_chain_calls(RemainingCalls, add_last_argument(CurrentCall, LastResult)).
+
+add_last_argument({call, Line, Fun, Args}, Argument) ->
+  {call, Line, Fun, Args ++ [Argument]}.
