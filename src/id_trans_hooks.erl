@@ -17,7 +17,8 @@
 %%
 -module(id_trans_hooks).
 
-%% A identity transformer of Erlang abstract syntax.
+%% A modified identity transformer of Erlang abstract syntax.
+%% Included are the hooks for calling fun_chain transforms.
 
 %% This module only traverses legal Erlang code. This is most noticeable
 %% in guards where only a limited number of expressions are allowed.
@@ -430,8 +431,8 @@ expr({'fun',Line,Body}) ->
 	    {'fun',Line,{function,M,F,A}}
     end;
   
-expr({call, _Line,{atom, _, fun_chain},As0}) ->
-  fun_chain:handle_chain(As0);
+expr({call, _Line,{atom, _, fun_chain},As0}) -> %% fun_chain call
+    fun_chain:handle_chain(As0);
   
 expr({call,Line,F0,As0}) ->
     %% N.B. If F an atom then call to local function or BIF, if F a

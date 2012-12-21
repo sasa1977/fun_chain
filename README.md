@@ -23,7 +23,7 @@ The fun_chain parse_transforms enables simpler syntax:
     
 The first argument of a fun_chain is an expression. All other arguments are function calls. The result of a previous call is automatically included as the last argument in the next function call. This eliminates the need for temp variables or staircasing.
 
-The dict here serves just as an example. The fun_chain can be used for any set of function calls where the value of the last function is fed as the last argument to the next function call.
+The dict here serves only as an example. The fun_chain can be used for any set of function calls where the value of the last function is fed as the last argument to the next function call.
 
 
 ## Usage
