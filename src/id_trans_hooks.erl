@@ -27,6 +27,8 @@
 
 -export([parse_transform/2]).
 
+-compile([nowarn_obsolete_guard]).
+
 parse_transform(Forms, _Options) ->
     forms(Forms).
 
