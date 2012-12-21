@@ -30,7 +30,7 @@ The dict here serves only as an example. The fun_chain can be used for any set o
 
 Erlang R15 or higher required. Compile with rebar:
 
-		rebar compile
+    rebar compile
 
 or manually.
 
