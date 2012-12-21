@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This simple parse_transform simplifies function chaining in Erlang.
+This parse transform simplifies function chaining in Erlang.
 
 Normally in Erlang when one needs to chain dict operations, one can write it as:
 
@@ -14,7 +14,7 @@ or as:
 
     dict:erase(a, dict:store(a, 1, dict:new()))
     
-The fun_chain parse_transforms enables simpler syntax:
+The fun_chain parse transforms enables simpler syntax:
 
     fun_chain(dict:new(),
       dict:store(a, 1),
@@ -32,9 +32,11 @@ Erlang R15 or higher required. Compile with rebar:
 
     rebar compile
 
-or manually.
+or manually:
 
-Once beams are compiled, make sure they are in the load path for erlc. Add following to your .erl:
+    mkdir -p ebin; erlc -o ebin/ src/*.erl
+
+Once beams are compiled, make sure they are in the load path for erlc. Add following to your .erl files:
 
     -compile({parse_transform, fun_chain}).
 
