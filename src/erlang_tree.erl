@@ -15,7 +15,7 @@
 %% 
 %%     $Id$
 %%
--module(id_trans_hooks).
+-module(erlang_tree).
 
 %% A modified identity transformer of Erlang abstract syntax.
 %% Included are the hooks for calling fun_chain transforms.
@@ -25,12 +25,11 @@
 %% N.B. if this module is to be used as a basis for tranforms then
 %% all the error cases must be handled otherwise this module just crashes!
 
--export([parse_transform/2]).
+-export([walk/1]).
 
 -compile([nowarn_obsolete_guard]).
 
-parse_transform(Forms, _Options) ->
-    forms(Forms).
+walk(Forms) -> forms(Forms).
 
 %% forms(Fs) -> lists:map(fun (F) -> form(F) end, Fs).
 

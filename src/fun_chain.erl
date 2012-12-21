@@ -3,8 +3,7 @@
 -module(fun_chain).
 -export([parse_transform/2, chain_calls/1]).
 
-parse_transform(Forms, _Options) ->
-  id_trans_hooks:parse_transform(Forms, _Options). % start standard parser
+parse_transform(Forms, _Options) -> erlang_tree:walk(Forms).
   
 chain_calls([Initial | Rest]) -> do_chain_calls(Rest, Initial).
 
