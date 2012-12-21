@@ -28,9 +28,13 @@ The dict here serves only as an example. The fun_chain can be used for any set o
 
 ## Usage
 
-Erlang R15 or higher required.
-Just rebar compile and make sure the beams are in the load path.
-Add following to your .erl:
+Erlang R15 or higher required. Compile with rebar:
+
+		rebar compile
+
+or manually.
+
+Once beams are compiled, make sure they are in the load path for erlc. Add following to your .erl:
 
     -compile({parse_transform, fun_chain}).
 
