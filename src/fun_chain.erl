@@ -10,7 +10,7 @@ parse_transform(Forms, _Options) ->
 handle_chain([Initial | Rest]) ->
   chain_call(Rest, Initial).
 
-%% Recursive handling of the cahin call.
+%% Recursive handling of the chain call.
 chain_call([], Acc) -> Acc; % last call in chain -> return Acc
 chain_call([{call,Line,F0,As0} | Rest], Acc) ->
   % Add the call to the list of arguments of the next call
