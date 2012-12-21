@@ -21,7 +21,7 @@ The fun_chain parse_transforms enables simpler syntax:
       dict:erase(a)
     )
     
-The first argument of a fun_chain is an expression. All other arguments are function calls. The expression of a previous call is automatically included as a last argument to a next expression. This eliminates the need for temp variables or staircasing.
+The first argument of a fun_chain is an expression. All other arguments are function calls. The result of a previous call is automatically included as the last argument in the next function call. This eliminates the need for temp variables or staircasing.
 
 
 ## Usage
@@ -30,6 +30,6 @@ Erlang R15 or higher required.
 Just rebar compile and make sure the beams are in the load path.
 Add following to your .erl:
 
-  -compile({parse_transform, fun_chain}).
+    -compile({parse_transform, fun_chain}).
 
 See tests for an example.
