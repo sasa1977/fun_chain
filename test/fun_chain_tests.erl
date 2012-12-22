@@ -15,5 +15,28 @@ simple_test_() ->
         dict:erase(a),
         dict:store(c,3)
       )
+    ),
+    
+    ?_assertEqual(
+      dict:new(), 
+      fun_chain(fun_chain(dict:new()))
+    ),
+    
+    ?_assertEqual(
+      dict:from_list([{a,1}]), 
+      fun_chain(dict:new(),
+        (fun(Dict) ->
+          dict:store(a,1,Dict)
+        end)()
+      )
+    ),
+    
+    ?_assertEqual(
+      dict:from_list([{a,1}]), 
+      fun_chain(dict:new(),
+        (fun(Dict) ->
+          fun_chain(Dict, dict:store(a,1))
+        end)()
+      )
     )
   ].
