@@ -40,3 +40,11 @@ chain_last_test_() ->
       )
     )
   ].
+  
+  
+chain_first_test_() -> 
+  [
+    ?_assertEqual(9, fun_chain:first(1, inc(3), inc(5)))
+  ].
+  
+inc(X, Inc) -> X + Inc.
