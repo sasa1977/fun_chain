@@ -3,13 +3,13 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
-simple_test_() -> 
+chain_last_test_() -> 
   [
-    ?_assertEqual(dict:new(), fun_chain(dict:new())),
+    ?_assertEqual(dict:new(), fun_chain:last(dict:new())),
       
     ?_assertEqual(
       dict:from_list([{b,2}, {c,3}]),
-      fun_chain(dict:new(),
+      fun_chain:last(dict:new(),
         dict:store(a,1),
         dict:store(b,2),
         dict:erase(a),
@@ -19,12 +19,12 @@ simple_test_() ->
     
     ?_assertEqual(
       dict:new(), 
-      fun_chain(fun_chain(dict:new()))
+      fun_chain:last(fun_chain:last(dict:new()))
     ),
     
     ?_assertEqual(
       dict:from_list([{a,1}]), 
-      fun_chain(dict:new(),
+      fun_chain:last(dict:new(),
         (fun(Dict) ->
           dict:store(a,1,Dict)
         end)()
@@ -33,9 +33,9 @@ simple_test_() ->
     
     ?_assertEqual(
       dict:from_list([{a,1}]), 
-      fun_chain(dict:new(),
+      fun_chain:last(dict:new(),
         (fun(Dict) ->
-          fun_chain(Dict, dict:store(a,1))
+          fun_chain:last(Dict, dict:store(a,1))
         end)()
       )
     )

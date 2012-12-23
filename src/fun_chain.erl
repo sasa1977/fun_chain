@@ -8,19 +8,18 @@ parse_transform(ParseTree, _Options) -> deep_walk(ParseTree).
 deep_walk(List) when is_list(List) ->
   [deep_walk(Element) || Element <- List];
 
-deep_walk({call, _Line, {atom, _, fun_chain}, [Initial | Calls]}) ->
-  chain_calls(Calls, deep_walk(Initial));
+deep_walk({call, _Line, {remote, _, {atom, _, fun_chain}, {atom, _, last}}, [Initial | Calls]}) ->
+  chain_calls(last, Calls, deep_walk(Initial));
 
 deep_walk(Tuple) when is_tuple(Tuple) ->
   list_to_tuple([deep_walk(Element) || Element <- tuple_to_list(Tuple)]);
 
 deep_walk(Other) -> Other.
   
-chain_calls([], LastResult) -> LastResult;
+chain_calls(_, [], LastResult) -> LastResult;
 
-chain_calls([CurrentCall | RemainingCalls], LastResult) ->
-  chain_calls(RemainingCalls, add_last_argument(CurrentCall, LastResult)).
+chain_calls(Where, [CurrentCall | RemainingCalls], LastResult) ->
+  chain_calls(Where, RemainingCalls, add_argument(Where, CurrentCall, LastResult)).
 
-add_last_argument({call, Line, Fun, Args}, Argument) ->
+add_argument(last, {call, Line, Fun, Args}, Argument) ->
   {call, Line, deep_walk(Fun), deep_walk(Args) ++ [Argument]}.
-  

@@ -14,12 +14,12 @@ or as:
     
 The fun_chain parse transforms enables simpler syntax:
 
-    fun_chain(dict:new(),
+    fun_chain:last(dict:new(),
       dict:store(a, 1),
       dict:erase(a)
     )
     
-The first argument of a fun_chain is an expression. All other arguments are function calls. The result of a previous call is automatically included as the last argument in the next call. This eliminates the need for temp variables or staircasing.
+The first argument of a fun_chain:last is an expression. All other arguments are function calls. The result of a previous call is automatically included as the last argument in the next call. This eliminates the need for temp variables or staircasing.
 
 The dict here serves only as an example. The fun_chain can be used for any set of function calls where the return value of the last call is fed as the last argument to the next call.
 
