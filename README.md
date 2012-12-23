@@ -1,6 +1,4 @@
-# fun_chain
-
-## Introduction
+# Introduction
 
 This parse transform simplifies function chaining in Erlang.
 
@@ -26,7 +24,7 @@ The first argument of a fun_chain is an expression. All other arguments are func
 The dict here serves only as an example. The fun_chain can be used for any set of function calls where the return value of the last call is fed as the last argument to the next call.
 
 
-## Usage
+# Usage
 
 Erlang R15 or higher required. Compile with rebar:
 
