@@ -6,7 +6,7 @@ Normally in Erlang when one needs to chain dict operations, one can write it as:
 
     D = dict:new(),
     D1 = dict:store(a, 1, D),
-    D2 = dict:erase(a, D)
+    D2 = dict:erase(a, D1)
 
 or as:
 
