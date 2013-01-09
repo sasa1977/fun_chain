@@ -1,6 +1,4 @@
 -module(fun_chain_tests).
--compile({parse_transform, fun_chain}).
-
 -include_lib("eunit/include/eunit.hrl").
 
 chain_last_test_() -> 
