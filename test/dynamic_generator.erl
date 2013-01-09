@@ -4,7 +4,7 @@
 % we can check that transform correctly generates errors.
 
 -module(dynamic_generator).
--export([exec_dynamic/3]).
+-export([exec_dynamic/3, compile/4]).
 
 -include_lib("eunit/include/eunit.hrl").
 
